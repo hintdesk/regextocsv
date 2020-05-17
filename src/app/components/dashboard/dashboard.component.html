@@ -1,0 +1,51 @@
+<mat-toolbar>
+    <mat-form-field class="regex">
+        <mat-label>Regex</mat-label>
+        <input (change)="onRegexPatternChanged()" matInput [(ngModel)]="regexPattern">
+    </mat-form-field>
+
+    <button [disabled]="isParseDisabled" (click)="parse()" class="parse" mat-raised-button color="primary">Parse</button>
+
+    <button [disabled]="isExportToCsvDisabled" (click)="exportToCsv()" class="parse" mat-raised-button color="primary">Export to
+        CSV</button>
+
+
+</mat-toolbar>
+
+<div class="row">
+    <div class="columnLeft">
+        <div class="description">Input</div>
+        <div *ngIf="isSelectFileVisible">
+            <div class="select_file_container">
+                <button class="select_file_button" type="button" mat-raised-button color="primary"
+                    (click)="fileInput.click()">Select a TXT file</button>
+                <input hidden (change)="onFileSelected()" #fileInput type="file" id="file">
+            </div>
+            <div class="copy_paste_title">{{filePath}}</div>
+        </div>
+
+        <div *ngIf="isTextAreaVisible && isSelectFileVisible" class="or">OR</div>
+
+        <div *ngIf="isTextAreaVisible">
+            <div class="copy_paste_title">Copy and paste the content of the TXT file into text area below</div>
+            <mat-form-field class="input_container">
+                <textarea (input)="onInputChanged()" class="input" name="input" matInput placeholder="..."
+                    [(ngModel)]="input"></textarea>
+            </mat-form-field>
+        </div>
+    </div>
+    <div class="columnRight">
+        <div class="description">Output</div>
+        <app-loader *ngIf="isLoaderVisible" class="loader"></app-loader>
+        <div class="error" *ngIf="error">{{error}}</div>
+        <table mat-table [dataSource]="dataSource" matSort class="output_table mat-elevation-z8">
+            <ng-container *ngFor="let column of visibleColumns" matColumnDef="{{column}}">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> {{column}} </th>
+                <td mat-cell *matCellDef="let element"> {{element[column]}} </td>
+            </ng-container>
+
+            <tr mat-header-row *matHeaderRowDef="visibleColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: visibleColumns;"></tr>
+        </table>
+    </div>
+</div>

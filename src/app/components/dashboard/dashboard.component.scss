@@ -1,0 +1,82 @@
+@import "../../../variables";
+
+.regex {
+    font-size: 14px;
+    width: 100%;
+}
+.parse {
+    margin-left: 15px;
+    width: 150px;
+}
+
+.row {
+    display: flex;
+}
+
+.columnLeft {
+    flex: 40%;
+    margin-left: 15px;
+}
+
+.columnRight {
+    flex: 60%;
+    margin-left: 15px;
+}
+
+.input_container {
+    width: 100%;
+}
+
+.input {
+    height: calc(100vh - 550px);
+}
+
+textarea {
+    color: white;
+    background-color: #333333;
+    padding: 15px;
+}
+
+.description {
+    color: white;
+    margin-top: 15px;
+    text-transform: uppercase;
+}
+
+.output_table {
+    margin-top: 15px;
+}
+
+.select_file_container {
+    text-align: center;
+    margin-top: 15px;
+}
+
+.select_file_button {
+    width: 150px;
+    height: 90px;
+}
+
+.or {
+    color: $primaryColor;
+    font-size: 50px;
+    text-align: center;
+    margin-top: 40px;
+}
+
+.copy_paste_title {
+    text-align: center;
+    color: white;
+    margin-top: 40px;
+}
+
+.error {
+    text-align: center;
+    color: $primaryColor;
+    margin-top: 40px;   
+}
+
+.loader {
+    display: flex;
+    justify-content: center;
+}
