@@ -123,6 +123,14 @@
               "devServerTarget": "regextocsv:serve:production"
             }
           }
+        },
+        "deploy": {
+          "builder": "angular-cli-ghpages:deploy",
+          "options": {
+            "baseHref": "https://hintdesk.github.io/regextocsv/",
+            "name": "REGEX to CSV",
+            "email": "admin@hintdesk.com"
+          }
         }
       }
     }
